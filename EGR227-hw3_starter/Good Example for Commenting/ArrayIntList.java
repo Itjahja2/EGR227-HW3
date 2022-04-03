@@ -7,8 +7,10 @@
 public class ArrayIntList {
 
     private int[] elementData;
+    private int[] data;
     private int size;
     public static final int DEFAULT_CAPACITY = 10;
+    int requiredCapacity;
 
     /** Initializes a new array list with initial capacity of initialCapacity integers. <br><br>
      *  pre: initialCapacity >= 0 otherwise throws an IllegalArgumentException */
@@ -23,12 +25,6 @@ public class ArrayIntList {
     /** Initializes a new empty list with initial capacity of DEFAULT_CAPACITY integers. */
     public ArrayIntList() {
         this(DEFAULT_CAPACITY);
-    }
-
-    /** 
-     * Initializes a new empty list with initial capacity of DEFAULT_CAPACITY integers.
-     **/
-    public ArrayIntList() {
         this.elementData = new int[10];
         this.size = 0;
     }
@@ -41,7 +37,7 @@ public class ArrayIntList {
         this.add(this.size, value);
     }
 
-    /** 
+    /**
      * Inserts value into the list at index. <br><br>
      * pre:  0 <= index <= size otherwise throws IndexOutOfBoundsException <br>
      * post: value is inserted at index; all later values are shifted right by 1 element 
@@ -59,25 +55,25 @@ public class ArrayIntList {
         this.size++;
     }
 
-    /** 
+    /**
      * Stores value in index. <br><br>
      * pre: 0 <= index <= size otherwise throws IndexOutOfBoundsException
      **/
     public void set(int index, int value) {
         this.checkIndex(index);
         this.elementData[index] = value;
-    } 
+    }
 
-    /** 
+    /**
      * Returns the value at index. <br><br>
      *  pre: 0 <= index <= size otherwise throws IndexOutOfBoundsException 
-     **/ 
+     **/
     public int get(int index) {
         this.checkIndex(index);
         return this.elementData[index];
     }
 
-    /** 
+    /**
      * Checks if index is a valid index into this ArrayIntList. <br>
      * post: throws IndexOutOfBoundsException if index < 0 or index >= max
      **/
@@ -87,7 +83,7 @@ public class ArrayIntList {
         }
     }
 
-    /** 
+    /**
      * Grows the ArrayIntList to have room for *at least* requiredCapacity elements. <br>
      * pre: 0 <= requiredCapacity otherwise throws IllegalArgumentException
      **/
